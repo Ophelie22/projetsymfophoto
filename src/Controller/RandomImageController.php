@@ -11,8 +11,15 @@ class RandomImageController extends AbstractController
     #[Route('/random/image', name: 'app_random_image')]
     public function index(): Response
     {
+        $images= [];
+        //on a 9 images
+        for ($i = 0; $i < 9; $i++) {
+            $images[]= 'https://picsum.photos/300/200?random='.$i;
+            
+        }
+        //dd($images);
         return $this->render('random_image/index.html.twig', [
-            'controller_name' => 'RandomImageController',
+            'images' => $images,
         ]);
     }
 }
